@@ -14,8 +14,8 @@ class ResultViewController: UIViewController {
     
     var answers: [Answer]!
     
-    var yourAnimal: Character = "a"
-    var definition = ""
+    private var yourAnimal: Character = "a"
+    private var definition = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
