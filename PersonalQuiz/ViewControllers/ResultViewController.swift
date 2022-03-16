@@ -19,8 +19,11 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.hidesBackButton = true
+        
         setTypeAnimal()
+        
         animalLabel.text = "ВЫ \(yourAnimal)"
         descriptionLabel.text = definition
     }
