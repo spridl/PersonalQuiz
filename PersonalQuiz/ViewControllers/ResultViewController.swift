@@ -14,9 +14,6 @@ class ResultViewController: UIViewController {
     
     var answers: [Answer]!
     
-    private var yourAnimal: Character = "a"
-    private var definition = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,12 +21,11 @@ class ResultViewController: UIViewController {
         
         setTypeAnimal()
         
-        animalLabel.text = "ВЫ \(yourAnimal)"
-        descriptionLabel.text = definition
     }
     
     private func setTypeAnimal() {
         var animals = [Animal]()
+        var greatestMatchCount = 0
         
         for answer in answers {
             animals.append(answer.animal)
@@ -38,13 +34,12 @@ class ResultViewController: UIViewController {
         let animalsMatchCount = animals.reduce(into: [:]) { counts, animal in
             counts[animal, default: 0] += 1
         }
-        
-        var greatestMatchCount = 0
+    
         for animal in animalsMatchCount {
             if animal.value > greatestMatchCount {
                 greatestMatchCount = animal.value
-                yourAnimal = animal.key.rawValue
-                definition = animal.key.definition
+                animalLabel.text = String(animal.key.rawValue)
+                descriptionLabel.text = animal.key.definition
             }
         }
     }
